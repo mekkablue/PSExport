@@ -39,6 +39,7 @@ class PSExport(FileFormatPlugin):
 	prefDict = {
 		"removeOverlap": True,
 		"outline": True,
+		"onlyShapes": True,
 	}
 	
 	# Definitions of IBOutlets
@@ -46,6 +47,7 @@ class PSExport(FileFormatPlugin):
 	dialog = objc.IBOutlet()
 	checkboxRemoveOverlap = objc.IBOutlet()
 	checkboxOutline = objc.IBOutlet()
+	checkboxOnlyShapes = objc.IBOutlet()
 
 	@objc.python_method
 	def settings(self):
@@ -74,6 +76,10 @@ class PSExport(FileFormatPlugin):
 	@objc.IBAction
 	def setRemoveOverlap_(self, sender):
 		Glyphs.defaults[self.prefDomain+".removeOverlap"] = bool(sender.intValue())
+
+	@objc.IBAction
+	def setOnlyShapes_(self, sender):
+		Glyphs.defaults[self.prefDomain+".onlyShapes"] = bool(sender.intValue())
 
 	@objc.python_method
 	def layerToPS(self, thisLayer, comment):
@@ -111,6 +117,8 @@ class PSExport(FileFormatPlugin):
 		# Ask for export destination and write the file:
 		title = "Choose export destination"
 		exportFolder = GetFolder(message=title, allowsMultipleSelection=False, path=None)
+		onlyShapes = Glyphs.defaults[self.prefDomain+".onlyShapes"]
+		removeOverlap = Glyphs.defaults[self.prefDomain+".removeOverlap"]
 		
 		if exportFolder:
 			count = 0
@@ -120,9 +128,10 @@ class PSExport(FileFormatPlugin):
 				interpolatedFont = thisInstance.interpolatedFont
 				for thisGlyph in [g for g in interpolatedFont.glyphs if g.export]:
 					thisLayer = thisGlyph.layers[0].copyDecomposedLayer()
-					if Glyphs.defaults[self.prefDomain+".removeOverlap"]:
-						thisLayer.removeOverlap()
-					psContent += self.layerToPS(thisLayer, thisGlyph.name)
+					if thisLayer.shapes or not onlyShapes:
+						if removeOverlap:
+							thisLayer.removeOverlap()
+						psContent += self.layerToPS(thisLayer, thisGlyph.name)
 				psContent += "%% "
 
 				saveFileInLocation(

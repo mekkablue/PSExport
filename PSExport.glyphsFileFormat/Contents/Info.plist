@@ -24,15 +24,15 @@
 	<key>CFBundleName</key>
 	<string>PSExport</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string> <!-- 1.0 -->
+	<string>0.2</string> <!-- 1.0 -->
 	<key>CFBundleVersion</key>
-	<string>1</string> <!-- 123 -->
+	<string>2</string> <!-- 123 -->
 	<key>UpdateFeedURL</key>
 	<string>https://raw.githubusercontent.com/mekkablue/PSExport/master/PSExport.glyphsFileFormat/Contents/Info.plist</string>
 	<key>productPageURL</key>
 	<string>https://github.com/mekkablue/PSExport</string>
 	<key>productReleaseNotes</key>
-	<string>Initial Release</string>
+	<string>Added option to only export glyphs with shapes.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright, Rainer Erich Scheichelbauer, 2022</string>
 	<key>NSPrincipalClass</key>
