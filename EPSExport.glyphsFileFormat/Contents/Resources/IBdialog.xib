@@ -13,8 +13,6 @@
                 <outlet property="checkboxRemoveOverlap" destination="9ad-G8-V6L" id="wn7-5L-jBw"/>
                 <outlet property="checkboxSelectedGlyphsOnly" destination="MX1-wp-U2d" id="8FA-5L-oQz"/>
                 <outlet property="dialog" destination="1" id="Ouh-Ly-d56"/>
-                <outlet property="glyphWidthCheckbox" destination="9ad-G8-V6L" id="uxc-LW-aTX"/>
-                <outlet property="unicodeCheckBox" destination="hZN-NZ-5QP" id="gOI-q8-hu7"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
