@@ -40,6 +40,7 @@ class PSExport(FileFormatPlugin):
 		"removeOverlap": True,
 		"outline": True,
 		"onlyShapes": True,
+		"metricsMarkers": False,
 	}
 	
 	# Definitions of IBOutlets
@@ -48,12 +49,13 @@ class PSExport(FileFormatPlugin):
 	checkboxRemoveOverlap = objc.IBOutlet()
 	checkboxOutline = objc.IBOutlet()
 	checkboxOnlyShapes = objc.IBOutlet()
+	checkboxMetricsMarkers = objc.IBOutlet()
 
 	@objc.python_method
 	def settings(self):
 		self.name = Glyphs.localize({
-			'en': u'PS Export',
-			'de': u'PostScript-Export',
+			'en': 'PS Export',
+			'de': 'PostScript-Export',
 			})
 		self.icon = 'ExportIcon'
 		self.toolbarPosition = 100
@@ -81,8 +83,12 @@ class PSExport(FileFormatPlugin):
 	def setOnlyShapes_(self, sender):
 		Glyphs.defaults[self.prefDomain+".onlyShapes"] = bool(sender.intValue())
 
+	@objc.IBAction
+	def setMetricsMarkers_(self, sender):
+		Glyphs.defaults[self.prefDomain+".metricsMarkers"] = bool(sender.intValue())
+
 	@objc.python_method
-	def layerToPS(self, thisLayer, comment):
+	def layerToPS(self, thisLayer, comment, markerSize=30):
 		charstring = ""
 		if comment:
 			charstring += "%%%% %s\n" % comment
@@ -109,6 +115,12 @@ class PSExport(FileFormatPlugin):
 			charstring += "stroke"
 		else:
 			charstring += "fill"
+		if Glyphs.defaults[self.prefDomain+".metricsMarkers"]:
+			charstring += "\n-%i 0 moveto 0 0 lineto " % (markerSize)
+			charstring += "0 %i moveto 0 -%i lineto " % (markerSize, markerSize)
+			charstring += "%i 0 moveto %i 0 lineto " % (thisLayer.width, thisLayer.width+markerSize)
+			charstring += "%i %i moveto %i -%i lineto " % (thisLayer.width, markerSize, thisLayer.width, markerSize)
+			charstring += "stroke\n"
 		charstring += "\nshowpage\n\n"
 		return charstring
 
@@ -132,7 +144,7 @@ class PSExport(FileFormatPlugin):
 						if removeOverlap:
 							thisLayer.removeOverlap()
 						psContent += self.layerToPS(thisLayer, thisGlyph.name)
-				psContent += "%% "
+				# psContent += "%% "
 
 				saveFileInLocation(
 					content=psContent,

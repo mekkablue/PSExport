@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PSExport">
             <connections>
+                <outlet property="checkboxMetricsMarkers" destination="USo-Ta-6Kz" id="f9b-vg-qDv"/>
                 <outlet property="checkboxOnlyShapes" destination="1nT-Kd-8NP" id="NOw-HC-4f0"/>
                 <outlet property="checkboxOutline" destination="hZN-NZ-5QP" id="w4a-rF-Rmr"/>
                 <outlet property="checkboxRemoveOverlap" destination="9ad-G8-V6L" id="wn7-5L-jBw"/>
@@ -18,18 +19,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="353" height="124"/>
+            <rect key="frame" x="0.0" y="0.0" width="353" height="146"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SYp-cB-Rym">
-                    <rect key="frame" x="18" y="88" width="317" height="16"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Export instances as PS documents:" id="FFC-Uy-bKK">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button toolTip="Defines, whether Unicode values should be written to the file." translatesAutoresizingMaskIntoConstraints="NO" id="hZN-NZ-5QP">
-                    <rect key="frame" x="18" y="63" width="315" height="18"/>
+                    <rect key="frame" x="18" y="85" width="315" height="18"/>
                     <buttonCell key="cell" type="check" title="Outlines (no fill)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g8i-HJ-9pQ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -40,7 +33,7 @@
                     </connections>
                 </button>
                 <button toolTip="Defines, whether Glyph width values should be written to the file." translatesAutoresizingMaskIntoConstraints="NO" id="9ad-G8-V6L">
-                    <rect key="frame" x="18" y="41" width="315" height="18"/>
+                    <rect key="frame" x="18" y="63" width="315" height="18"/>
                     <buttonCell key="cell" type="check" title="Remove Overlap" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pZ3-gM-vvv">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -51,7 +44,7 @@
                     </connections>
                 </button>
                 <button toolTip="Defines, whether Glyph width values should be written to the file." translatesAutoresizingMaskIntoConstraints="NO" id="1nT-Kd-8NP">
-                    <rect key="frame" x="18" y="19" width="315" height="18"/>
+                    <rect key="frame" x="18" y="41" width="315" height="18"/>
                     <buttonCell key="cell" type="check" title="Only export glyphs with shapes (no spaces)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="zBx-1T-E1A">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -61,22 +54,45 @@
                         <action selector="setOnlyShapes:" target="-2" id="CB5-FZ-v6w"/>
                     </connections>
                 </button>
+                <button toolTip="Defines, whether Glyph width values should be written to the file." translatesAutoresizingMaskIntoConstraints="NO" id="USo-Ta-6Kz">
+                    <rect key="frame" x="18" y="19" width="315" height="18"/>
+                    <buttonCell key="cell" type="check" title="Add metrics markers" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tdN-hp-WbQ">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <accessibility description="Defines, whether Glyph width values should be written to the file."/>
+                    <connections>
+                        <action selector="setMetricsMarkers:" target="-2" id="sSg-jt-zMf"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SYp-cB-Rym">
+                    <rect key="frame" x="18" y="110" width="317" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Export instances as PS documents:" id="FFC-Uy-bKK">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="9ad-G8-V6L" firstAttribute="top" secondItem="hZN-NZ-5QP" secondAttribute="bottom" constant="6" symbolic="YES" id="3t5-hm-P5o"/>
-                <constraint firstItem="hZN-NZ-5QP" firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" id="4AT-RE-Gab"/>
-                <constraint firstItem="hZN-NZ-5QP" firstAttribute="top" secondItem="SYp-cB-Rym" secondAttribute="bottom" constant="8" symbolic="YES" id="4Hf-O3-saI"/>
-                <constraint firstAttribute="trailing" secondItem="1nT-Kd-8NP" secondAttribute="trailing" constant="20" symbolic="YES" id="52N-1f-QLn"/>
-                <constraint firstItem="1nT-Kd-8NP" firstAttribute="trailing" secondItem="9ad-G8-V6L" secondAttribute="trailing" id="LJ1-Dp-ZWH"/>
-                <constraint firstAttribute="bottom" secondItem="1nT-Kd-8NP" secondAttribute="bottom" constant="20" symbolic="YES" id="VYM-fe-RJw"/>
-                <constraint firstItem="hZN-NZ-5QP" firstAttribute="leading" secondItem="SYp-cB-Rym" secondAttribute="leading" id="Ww3-tp-ctZ"/>
-                <constraint firstItem="1nT-Kd-8NP" firstAttribute="leading" secondItem="9ad-G8-V6L" secondAttribute="leading" id="cAI-IB-LBa"/>
-                <constraint firstItem="9ad-G8-V6L" firstAttribute="leading" secondItem="SYp-cB-Rym" secondAttribute="leading" id="iAW-t0-wQP"/>
-                <constraint firstItem="1nT-Kd-8NP" firstAttribute="top" secondItem="9ad-G8-V6L" secondAttribute="bottom" constant="6" symbolic="YES" id="ko1-7y-btZ"/>
-                <constraint firstItem="9ad-G8-V6L" firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" id="rR3-p4-Wq3"/>
-                <constraint firstItem="1nT-Kd-8NP" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="uRn-9R-Rnk"/>
+                <constraint firstItem="USo-Ta-6Kz" firstAttribute="top" secondItem="1nT-Kd-8NP" secondAttribute="bottom" constant="6" symbolic="YES" id="0Oe-yI-gIv"/>
+                <constraint firstItem="9ad-G8-V6L" firstAttribute="top" secondItem="hZN-NZ-5QP" secondAttribute="bottom" constant="6" symbolic="YES" id="11Q-Ct-1fG"/>
+                <constraint firstItem="1nT-Kd-8NP" firstAttribute="top" secondItem="9ad-G8-V6L" secondAttribute="bottom" constant="6" symbolic="YES" id="5Ic-20-sJz"/>
+                <constraint firstItem="SYp-cB-Rym" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="6nI-s1-wqy"/>
+                <constraint firstItem="SYp-cB-Rym" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="EyR-cc-UXr"/>
+                <constraint firstItem="SYp-cB-Rym" firstAttribute="trailing" secondItem="hZN-NZ-5QP" secondAttribute="trailing" id="MTP-2D-ZLm"/>
+                <constraint firstItem="SYp-cB-Rym" firstAttribute="leading" secondItem="hZN-NZ-5QP" secondAttribute="leading" id="QrZ-an-Gn2"/>
+                <constraint firstItem="hZN-NZ-5QP" firstAttribute="leading" secondItem="9ad-G8-V6L" secondAttribute="leading" id="Svd-rk-q3q"/>
+                <constraint firstItem="9ad-G8-V6L" firstAttribute="trailing" secondItem="1nT-Kd-8NP" secondAttribute="trailing" id="UOW-JX-x7Y"/>
+                <constraint firstItem="1nT-Kd-8NP" firstAttribute="trailing" secondItem="USo-Ta-6Kz" secondAttribute="trailing" id="VdB-dS-cPN"/>
+                <constraint firstAttribute="bottom" secondItem="USo-Ta-6Kz" secondAttribute="bottom" constant="20" symbolic="YES" id="X3q-5r-vkK"/>
+                <constraint firstItem="1nT-Kd-8NP" firstAttribute="leading" secondItem="USo-Ta-6Kz" secondAttribute="leading" id="ZOh-sp-gtr"/>
+                <constraint firstItem="9ad-G8-V6L" firstAttribute="leading" secondItem="1nT-Kd-8NP" secondAttribute="leading" id="gMk-2s-Gib"/>
+                <constraint firstItem="hZN-NZ-5QP" firstAttribute="top" secondItem="SYp-cB-Rym" secondAttribute="bottom" constant="8" symbolic="YES" id="n9F-NB-SYn"/>
+                <constraint firstItem="hZN-NZ-5QP" firstAttribute="trailing" secondItem="9ad-G8-V6L" secondAttribute="trailing" id="o60-hf-Y0k"/>
+                <constraint firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" constant="20" symbolic="YES" id="wfd-rG-lI5"/>
             </constraints>
-            <point key="canvasLocation" x="-53.5" y="52"/>
+            <point key="canvasLocation" x="-53.5" y="-119"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="gEz-I4-vNS"/>
     </objects>
