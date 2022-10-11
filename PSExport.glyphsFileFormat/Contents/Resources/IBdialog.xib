@@ -50,9 +50,8 @@
                         <action selector="setRemoveOverlap:" target="-2" id="QiB-q4-o42"/>
                     </connections>
                 </button>
-                <button toolTip="Defines, whether Glyph width values should be written to the file." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nT-Kd-8NP">
+                <button toolTip="Defines, whether Glyph width values should be written to the file." translatesAutoresizingMaskIntoConstraints="NO" id="1nT-Kd-8NP">
                     <rect key="frame" x="18" y="19" width="315" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Only export glyphs with shapes (no spaces)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="zBx-1T-E1A">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -67,12 +66,15 @@
                 <constraint firstItem="9ad-G8-V6L" firstAttribute="top" secondItem="hZN-NZ-5QP" secondAttribute="bottom" constant="6" symbolic="YES" id="3t5-hm-P5o"/>
                 <constraint firstItem="hZN-NZ-5QP" firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" id="4AT-RE-Gab"/>
                 <constraint firstItem="hZN-NZ-5QP" firstAttribute="top" secondItem="SYp-cB-Rym" secondAttribute="bottom" constant="8" symbolic="YES" id="4Hf-O3-saI"/>
-                <constraint firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" constant="20" symbolic="YES" id="Nny-uR-57z"/>
-                <constraint firstItem="SYp-cB-Rym" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="Vc2-8T-9ek"/>
+                <constraint firstAttribute="trailing" secondItem="1nT-Kd-8NP" secondAttribute="trailing" constant="20" symbolic="YES" id="52N-1f-QLn"/>
+                <constraint firstItem="1nT-Kd-8NP" firstAttribute="trailing" secondItem="9ad-G8-V6L" secondAttribute="trailing" id="LJ1-Dp-ZWH"/>
+                <constraint firstAttribute="bottom" secondItem="1nT-Kd-8NP" secondAttribute="bottom" constant="20" symbolic="YES" id="VYM-fe-RJw"/>
                 <constraint firstItem="hZN-NZ-5QP" firstAttribute="leading" secondItem="SYp-cB-Rym" secondAttribute="leading" id="Ww3-tp-ctZ"/>
+                <constraint firstItem="1nT-Kd-8NP" firstAttribute="leading" secondItem="9ad-G8-V6L" secondAttribute="leading" id="cAI-IB-LBa"/>
                 <constraint firstItem="9ad-G8-V6L" firstAttribute="leading" secondItem="SYp-cB-Rym" secondAttribute="leading" id="iAW-t0-wQP"/>
-                <constraint firstItem="SYp-cB-Rym" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="qdq-YZ-KML"/>
+                <constraint firstItem="1nT-Kd-8NP" firstAttribute="top" secondItem="9ad-G8-V6L" secondAttribute="bottom" constant="6" symbolic="YES" id="ko1-7y-btZ"/>
                 <constraint firstItem="9ad-G8-V6L" firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" id="rR3-p4-Wq3"/>
+                <constraint firstItem="1nT-Kd-8NP" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="uRn-9R-Rnk"/>
             </constraints>
             <point key="canvasLocation" x="-53.5" y="52"/>
         </customView>
