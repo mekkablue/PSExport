@@ -113,7 +113,9 @@ class PSExport(FileFormatPlugin):
 		exportFolder = GetFolder(message=title, allowsMultipleSelection=False, path=None)
 		
 		if exportFolder:
+			count = 0
 			for thisInstance in [i for i in font.instances if i.active and i.type==INSTANCETYPESINGLE]:
+				count += 1
 				psContent = "%!PS\n<</Install { 100 300 translate .4 .4 scale } bind >> setpagedevice\n\n"
 				interpolatedFont = thisInstance.interpolatedFont
 				for thisGlyph in [g for g in interpolatedFont.glyphs if g.export]:
@@ -129,9 +131,9 @@ class PSExport(FileFormatPlugin):
 					filePath=exportFolder,
 					)
 			
-			return (True, 'PS exported into folder ‘%s’.' % (path.basename(exportFolder)))
+			return (True, '%i PS file%s exported in ‘%s’.' % (count, "" if count==1 else "s", path.basename(exportFolder)))
 		else:
-			return (False, 'No file chosen')
+			return (False, 'No folder chosen.')
 
 	@objc.python_method
 	def __file__(self):
