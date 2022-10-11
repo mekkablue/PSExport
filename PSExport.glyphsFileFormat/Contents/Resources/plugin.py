@@ -29,7 +29,7 @@ def saveFileInLocation(content="", fileName="font.ps", filePath="~/Desktop"):
 	content=codecs.encode(content, encoding='utf-8')
 	content=codecs.decode(content, encoding='ascii', errors='ignore')
 	with codecs.open(saveFileLocation, "w", encoding="ascii", errors="ignore") as thisFile:
-		print("Exporting to:", thisFile.name)
+		# print("Exporting PS:", thisFile.name) # DEBUG
 		thisFile.write(content)
 		thisFile.close()
 	return True
