@@ -138,15 +138,16 @@ class EPSExport(FileFormatPlugin):
 		exportFolder = GetFolder(message=title, allowsMultipleSelection=False, path=None)
 		onlyShapes = Glyphs.defaults[self.prefDomain+".onlyShapes"]
 		removeOverlap = Glyphs.defaults[self.prefDomain+".removeOverlap"]
-		selectedGlyphsOnly = Glyphs.defaults[self.prefDomain+".selectedGlyphsOnly"]
+		selectedGlyphsOnly = bool(Glyphs.defaults[self.prefDomain+".selectedGlyphsOnly"])
+		selectedGlyphs = [g.name for g in font.selection]
+		print(", ".join(selectedGlyphs))
 		
 		if exportFolder:
 			count = 0
 			for thisInstance in [i for i in font.instances if i.active and i.type==INSTANCETYPESINGLE]:
 				instanceFileName = thisInstance.fileName().stringByDeletingDotSuffix()
-				
 				interpolatedFont = thisInstance.interpolatedFont
-				for thisGlyph in [g for g in interpolatedFont.glyphs if g.export and (g in font.selection or not selectedGlyphsOnly)]:
+				for thisGlyph in [g for g in interpolatedFont.glyphs if g.export and (not selectedGlyphsOnly or g.name in selectedGlyphs)]:
 					thisLayer = thisGlyph.layers[0].copyDecomposedLayer()
 					if thisLayer.shapes or not onlyShapes:
 						epsContent = "%!PS-Adobe-3.1 EPSF-3.0\n"
