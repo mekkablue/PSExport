@@ -71,7 +71,7 @@ class EPSExport(FileFormatPlugin):
 			domain = "%s.%s" % (self.prefDomain, prefKey)
 			Glyphs.registerDefault(domain, self.prefDict[prefKey])
 			checkboxName = "checkbox"+prefKey[0].upper()+prefKey[1:]
-			print(prefKey, checkboxName)
+			# print(prefKey, checkboxName)
 			getattr(self, checkboxName).setState_(Glyphs.defaults[domain])
 	
 	@objc.IBAction
@@ -140,7 +140,7 @@ class EPSExport(FileFormatPlugin):
 		removeOverlap = Glyphs.defaults[self.prefDomain+".removeOverlap"]
 		selectedGlyphsOnly = bool(Glyphs.defaults[self.prefDomain+".selectedGlyphsOnly"])
 		selectedGlyphs = [g.name for g in font.selection]
-		print(", ".join(selectedGlyphs))
+		# print(", ".join(selectedGlyphs))
 		
 		if exportFolder:
 			count = 0
