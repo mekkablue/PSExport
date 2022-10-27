@@ -15,7 +15,7 @@ Install via *Window > Plugin Manager > Plugins.* Restart the app.
 
 ## Usage
 
-1. Choose *File > Export…* (Cmd-E) and pick *PS Export* (or EPS Export) in the dialog that comes up. 
+1. Choose *File > Export…* (Cmd-E) and pick *PS Export* or *EPS Export* in the dialog that comes up. 
 2. Pick options appropriate for you in the dialog sheet.
 3. When you are done, press the *Continue…* button
 
